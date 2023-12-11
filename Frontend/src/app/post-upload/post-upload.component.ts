@@ -19,21 +19,21 @@ export class PostUploadComponent implements OnInit{
    isAdded:boolean=false
    isUploading:boolean=false
    isSettingsShown:Boolean=false
-   
+
 
   constructor(private http: HttpClient,private api:ApiService,private activatedRoute:ActivatedRoute,
     private route:Router) {}
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((response:any)=>{
-       this.userId=response.InstaId
-    })
-    //for displaying the profilepic in sidebar
-    this.api.getDetails(this.userId).subscribe((response:any)=>{
-      this.profilepic=response.details.profilepic[0].path
-    },(response:any)=>{
-      //if no response page not found
-      this.route.navigateByUrl('**')
-    })
+    // this.activatedRoute.params.subscribe((response:any)=>{
+    //    this.userId=response.InstaId
+    // })
+    // //for displaying the profilepic in sidebar
+    // this.api.getDetails(this.userId).subscribe((response:any)=>{
+    //   this.profilepic=response.details.profilepic[0].path
+    // },(response:any)=>{
+    //   //if no response page not found
+    //   this.route.navigateByUrl('**')
+    // })
   }
 
   onFileSelected(event:any){
@@ -48,27 +48,27 @@ export class PostUploadComponent implements OnInit{
       console.log(response)
       if(response){
         this.isAdded=true
-       
-      
+
+
         setTimeout(() => {
           this.route.navigateByUrl(`social/myprofile/${this.userId}`)
           this.isAdded=false
-         
-          
+
+
 
          }, 2000);
-        
+
       }
      })
 
     }
-   
+
 
   }
- 
 
 
-  
+
+
   showSettings(){
     this.isSettingsShown=!this.isSettingsShown
     const settings:any=document.getElementById('setting')
@@ -80,8 +80,8 @@ export class PostUploadComponent implements OnInit{
     settings.style.color='white'
     }
 }
-  
- 
-  
+
+
+
 
 }

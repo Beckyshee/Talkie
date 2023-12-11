@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-2 sidebar sticky-top">
             <div class="sidebar-inner">
-                <h1>Shots</h1>
+                <h1>Talky</h1>
 
                <div >
                 <button  (click)="toHome()" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.34);background-color: #ffffff;color: #194954;" ><i class="fa-solid fa-house m-2"></i>Home</button>
@@ -18,7 +18,7 @@
                <div>
                 <button (click)="addPostPage()" class="side-btn"><i class="fa-solid fa-image m-2"></i>Add Shots</button>
                </div>
-              
+
                <div>
                 <button (click)="toMessage()" class="side-btn"><i class="fa-solid fa-message m-2"></i>Messages</button>
                </div>
@@ -53,11 +53,11 @@
                         <button  (click)="followUser()" *ngIf="isFollowing"  class="follow-btn">Follow</button>
                         <button (click)="unFollow()" *ngIf="unFollowBtn" class="follow-btn">Unfollow</button>
                     </div>
-                    
-                  
+
+
                 </div>
-                
-               
+
+
             </div>
             <div class="row" style="margin-top: 30px;">
                 <div class="col-md-12 d-flex flex-row flex-wrap main-posts">
@@ -72,9 +72,9 @@
                     </div>
                 </div>
             </div>
-          
+
         </div>
-        
+
         <div class="col-md-3 right-side-bar">
             <app-right-side-bar class="sticky-top"></app-right-side-bar>
         </div>

@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-2 sidebar sticky-top" style="background-color: #194954;">
         <div class="sidebar-inner" style="background-color: #194954;">
-            <h1>Shots</h1>
+            <h1>Talky</h1>
 
            <div >
             <button class="side-btn" routerLink="/social/home/{{userId}}"><i  class="fa-solid fa-house m-2"></i>Home</button>
@@ -33,15 +33,15 @@
         </div>
         </div>
     </div>
-    
+
     <div class="col-md-10 upload-portion text-center">
       <div class="background">
       <div class="alert alert-success" *ngIf="isAdded" role="alert" style="box-shadow: 0 0 10px black;">
-        Added SuccessFully 
+        Added SuccessFully
       </div>
 
-      
-     
+
+
       <div style="width: 100%;"  *ngIf="!isAdded "  class="text-center">
         <button class="input-btn ">
           <input  type="file" (change)="onFileSelected($event)" accept=".jpg, .jpeg, .png">
@@ -50,9 +50,9 @@
             </span>
         </button>
       </div>
-      
+
       </div>
     </div>
-    
+
     </div>
    </div>

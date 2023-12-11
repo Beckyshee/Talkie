@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-2 sidebar ">
         <div class="sidebar-inner">
-            <h1>Shots</h1>
+            <h1>Talky</h1>
 
            <div >
             <button routerLink="/social/home/{{userId}}" class="side-btn"><i  class="fa-solid fa-house m-2"></i>Home</button>
@@ -33,7 +33,7 @@
          <button class="side-btn set-btn" id="setting" (click)="showSettings()"><i class="fa-solid fa-gear m-2"></i>Settings</button>
         </div>
         </div>
-        
+
     </div>
     <div class="col-md-10 message">
         <div class="row">
@@ -82,7 +82,7 @@
                         </div>
                        </div>
                     </div>
-                   
+
                     <div class="col-9 " *ngIf="isChatSidePresent">
                         <div class="nav-portion ">
                         <div class="profile-pic">
@@ -93,9 +93,9 @@
                             <h5>{{individualChatDetails.Name}}</h5>
                         </div>
                         </div>
-                        
+
                         <div class="message-portion">
-                           
+
                             <div class="messages">
                                 <div class="text-center pt-4">
                                     <p>The chats are end to end encrypted</p>
@@ -103,32 +103,32 @@
                                         lock
                                         </span>
                                 </div>
-                               
+
                                     <div class="chats"  *ngFor="let message of final">
 
                                         <p style="letter-spacing: 2px;margin-bottom: 5px;">{{message.fromWho}}</p>
                                         <h6 id="from">{{message.message}}</h6>
-                                        
+
                                     </div>
-                                   
-                           
-                                
-                                
-                                 
+
+
+
+
+
                             </div>
 
                         </div>
                         <div class="sending-portion">
                             <div class="row">
-                               
+
                                     <div class="col-10">
                                         <form action="">
                                             <input [(ngModel)]="message" name="message" class="chat-input" type="text">
 
                                         </form>
                                      </div>
-                                    
-                             
+
+
                                 <div class="col-2">
                                     <button [disabled]="isMessagePresent" class="send-btn" (click)="sendMessage(individualChatDetails._id)"><span class="material-symbols-outlined">
                                       send
@@ -138,15 +138,14 @@
                         </div>
 
                     </div>
-                   
+
                 </div>
             </div>
         </div>
     </div>
 
 
-    
-    
+
+
    </div>
 
-   

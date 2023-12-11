@@ -30,19 +30,19 @@ export class EditProfileComponent implements OnInit{
 
     })
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((response:any)=>{
-      this.userId=response.InstaId
-   })
-   this.api.getDetails(this.userId).subscribe((response:any)=>{
-     this.profilepic=response.details.profilepic[0].path
-     this.profileDetails=response.details
-   },(response:any)=>{
-    this.route.navigateByUrl('**')
-   })
+  //   this.activatedRoute.params.subscribe((response:any)=>{
+  //     this.userId=response.InstaId
+  //  })
+  //  this.api.getDetails(this.userId).subscribe((response:any)=>{
+  //    this.profilepic=response.details.profilepic[0].path
+  //    this.profileDetails=response.details
+  //  },(response:any)=>{
+  //   this.route.navigateByUrl('**')
+  //  })
   }
 
- 
-  
+
+
   showSettings(){
     this.isSettingsShown=!this.isSettingsShown
     const settings:any=document.getElementById('setting')

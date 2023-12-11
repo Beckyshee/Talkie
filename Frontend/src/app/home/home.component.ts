@@ -17,16 +17,16 @@ export class HomeComponent implements OnInit{
   allposts:any[]=[] //for holding posts
   singlePost:any={}  //for holding posts
   forName:any={}  //for holding posts to insert name
-  showComment:boolean=false 
+  showComment:boolean=false
   commentInput:String=''
   comments:any={} //for holding comments
 
 
   isCommentPresent:boolean=false //boolean value for changing to comment
-  
 
-  
-  
+
+
+
   isFollowingAnyone:boolean=false
   //holding profilepic
   profilepic:String=''
@@ -38,36 +38,36 @@ export class HomeComponent implements OnInit{
   //variable for holding token
   token:any //for holding token
 
- 
+
   constructor(private activatedRoute:ActivatedRoute,private api:ApiService,private fb:FormBuilder,
     private route:Router){}
 
 
   ngOnInit(): void {
 
-    //code for reloading the the same page
-    this.route.routeReuseStrategy.shouldReuseRoute = () => false;
+//     //code for reloading the the same page
+//     this.route.routeReuseStrategy.shouldReuseRoute = () => false;
 
-//for takng the id from the link as params
-    this.activatedRoute.params.subscribe((data:any)=>{
-         this.userId=data.InstaId
-    })
-   
+// //for takng the id from the link as params
+//     this.activatedRoute.params.subscribe((data:any)=>{
+//          this.userId=data.InstaId
+//     })
 
-    this.token=localStorage.getItem('token')
-    if(this.token){
-      this.getDetails()
-    }else{
-      alert('Please Login')
-    }
-     
-    
-   
+
+//     this.token=localStorage.getItem('token')
+//     if(this.token){
+//       this.getDetails()
+//     }else{
+//       alert('Please Login')
+//     }
+
+
+
 
   }
   getDetails(){
     this.api.getDetails(this.userId).subscribe((data:any)=>{
-       
+
       if(data){
         this.followList=data.details.Followers
       this.profilepic=data.details.profilepic[0].path
@@ -83,17 +83,17 @@ export class HomeComponent implements OnInit{
          // console.log(data.details.posts)
          this.forName=data.details.posts
          for(let j=0;j<this.forName.length;j++){
-          
+
           //inserting name and profilename of user to post array
            this.forName[j]['name']=data.details.Name
            this.forName[j]['personalId']=data.details._id
            this.forName[j]['profilepath']=data.details.profilepic[0].path
-           
+
            this.allposts.push(this.forName[j])
            console.log(this.allposts)
 
-          
-         
+
+
            // console.log(this.singlePost)
 
            this.singlePost=this.allposts.sort((a:any, b:any) => (a.date > b.date ? -1 : 1));
@@ -106,24 +106,24 @@ export class HomeComponent implements OnInit{
                  this.singlePost[i]['likescount']=response.response.likes.length
                  console.log(response.response.likes)
 
-              
+
              //to know about the posts liked by you
                  this.api.getIndividualLikes(this.userId).subscribe((response:any)=>{
                   // console.log(response.response.filenames[i])
                   //console.log(this.singlePost[i].filename)
                   if(response.response.filenames.includes(this.singlePost[i].filename)){
-                   
+
                     const changeColour:any=document.getElementById(`${this.singlePost[i].filename}`)
-                    changeColour.style.color='red' 
+                    changeColour.style.color='red'
                   }
                  })
 
-                
+
                }
-               
-              
-              
-               
+
+
+
+
              },(response:any)=>{
                this.singlePost[i]['likescount']=0
                this.isFollowingAnyone=false
@@ -133,26 +133,26 @@ export class HomeComponent implements OnInit{
            //adding comments count
            for(let i=0;i<this.singlePost.length;i++){
             this.api.readComments(this.singlePost[i].filename).subscribe((response:any)=>{
-              
+
               this.singlePost[i]['commentsCount']=response.details.length
-             
-              
+
+
             })
            }
 
 
 
 
-          
+
          }
-         
+
        })
-       
+
      }
       }else{
         this.route.navigateByUrl('**')
       }
-   
+
    },(data:any)=>{
     this.route.navigateByUrl('**')
    })
@@ -166,7 +166,7 @@ export class HomeComponent implements OnInit{
     // console.log(filename)
     this.api.readComments(filename).subscribe((response:any)=>{
       // console.log(response.details)
-      
+
       this.comments=response.details
       this.showComment=!this.showComment
       if(response.details.length<1){
@@ -181,29 +181,29 @@ export class HomeComponent implements OnInit{
           this.comments[i]['fromprofilepic']=response.details.profilepic[0].path
           this.comments[i]['fromname']=response.details.Name
          // console.log(this.comments)
-         
-         
+
+
         })
       }
-      
+
 
      })
-     
-    
+
+
   }
 
   //adding comments for a specific pic
   addComments(filename:String,to_id:String){
     if(this.commentInput==''){
-     
+
     }else{
       this.api.addComments(filename,this.userId,to_id,this.commentInput).subscribe((response:any)=>{
-        
-      
+
+
         this.commentInput=''
         this.readComments(filename)
-        
-        
+
+
       })
     }
     }
@@ -221,18 +221,18 @@ export class HomeComponent implements OnInit{
       console.log(response.message)
       const changeColour:any=document.getElementById(`${filename}`)
       if(response.message=='liked'){
-        changeColour.style.color='red' 
+        changeColour.style.color='red'
       }else{
         changeColour.style.color='white'
       }
       this.api.individualLikes(filename,this.userId).subscribe((response:any)=>{
-        
+
       })
-     
-      
+
+
     })
 
-   
+
   }
 
 
@@ -245,12 +245,12 @@ export class HomeComponent implements OnInit{
           this.singlePost[i]['likescount']=response.response.likes.length
         }
       })
-      
-      
+
+
     }
 
-    
-   
+
+
   }
 
 //function to show settings in sidebar and for manipulating the dom

@@ -38,15 +38,15 @@ export class ProfileComponent implements OnInit{
   ngOnInit(): void {
 
     //code for refreshing the page
-    this.route.routeReuseStrategy.shouldReuseRoute = () => false;
-    //getting user id
-  this.activatedRoute.params.subscribe((response:any)=>{
-      this.userId=response.InstaId
-  })
-  this.getDetails()
+  //   this.route.routeReuseStrategy.shouldReuseRoute = () => false;
+  //   //getting user id
+  // this.activatedRoute.params.subscribe((response:any)=>{
+  //     this.userId=response.InstaId
+  // })
+  // this.getDetails()
 
   //getting the specific user details
- 
+
   }
 
   //getting user details in profile page
@@ -64,7 +64,7 @@ export class ProfileComponent implements OnInit{
       this.following=details.details.Following.length
 
       if(details.details.Followers.length==0){
-       
+
         this.isFollowingSomeone=false
       }
 
@@ -75,7 +75,7 @@ export class ProfileComponent implements OnInit{
       //getting follower details
       for(let i=0;i<details.details.Followers.length;i++){
            this.api.getDetails(details.details.Followers[i].followId).subscribe((response:any)=>{
-               console.log(response)  
+               console.log(response)
                this.followingDetails.push(response.details)
                console.log(this.followingDetails)
            },(response:any)=>{
@@ -88,18 +88,18 @@ export class ProfileComponent implements OnInit{
 //getting details of followers
       for(let i=0;i<details.details.Following.length;i++){
         this.api.getDetails(details.details.Following[i].followerId).subscribe((response:any)=>{
-            console.log(response)  
+            console.log(response)
             this.followerDetails.push(response.details)
             console.log(this.followerDetails)
         },(response:any)=>{
           //removing the follower if account was deleted
           this.api.removePeopleWhoFollow(this.userId,details.details.Following[i].followerId).subscribe((response:any)=>{
-            
+
           })
         })
    }
-  
-  
+
+
       if(details.details.profilepic.length>0){
           this.isPicPresent=false
           this.ifProfilePicExist=true
@@ -116,7 +116,7 @@ export class ProfileComponent implements OnInit{
       const file=event.target.files[0]; //file in 0th position of files array
       const formData=new FormData //creating a new formdata
       formData.append('file',file) //append file in formdata
-    
+
       console.log(file)
       //calling the function and passing formdata
       this.api.uploadProfilePic(formData,this.userId).subscribe((response:any)=>{
@@ -124,13 +124,13 @@ export class ProfileComponent implements OnInit{
         if(response){
           this.getDetails()
         }
-        
+
        })
-       
+
      }else{
       alert('Please provide an input')
      }
-     
+
   }
 
   //getting the details of posts in modal
@@ -148,7 +148,7 @@ export class ProfileComponent implements OnInit{
   //getting comments in modal
   getComments(filename:any){
       this.api.readComments(filename).subscribe((response:any)=>{
-        
+
         this.comments=response.details
         this.commentCount=response.details.length
         if(this.comments.length==0){
@@ -156,7 +156,7 @@ export class ProfileComponent implements OnInit{
         }else{
           this.isCommentPresent=false
         }
-       
+
 //getting the comment details and the one who put the comments
         for(let i=0;i<response.details.length;i++){
           this.api.getDetails(response.details[i].from_id).subscribe((data:any)=>{
@@ -178,9 +178,9 @@ export class ProfileComponent implements OnInit{
       // this.route.navigateByUrl(`social/myprofile/${this.userId}`)
       console.log(response)
       this.openModal=false
-      
+
       this.getDetails()
-     
+
     })
 
   }
@@ -227,7 +227,7 @@ export class ProfileComponent implements OnInit{
     this.api.unFollow(this.userId,followId).subscribe((response:any)=>{
       this.followingDetails=[]
       this.getDetails()
-     
+
     })
   }
 

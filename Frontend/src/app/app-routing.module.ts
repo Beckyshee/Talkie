@@ -30,31 +30,31 @@ const routes: Routes = [
     path:'social/register',component:RegisterComponent
   },
   {
-    path:'social/home/:InstaId',component:HomeComponent
+    path:'social/home',component:HomeComponent
   },
   {
-    path:'social/uploadpost/:InstaId',component:PostUploadComponent
+    path:'social/uploadpost',component:PostUploadComponent
   },
   {
-    path:'social/messages/:InstaId',component:MessagesComponent
+    path:'social/messages',component:MessagesComponent
   },
   {
-    path:'social/myprofile/:InstaId',component:ProfileComponent
+    path:'social/myprofile',component:ProfileComponent
   },
   {
-    path:'social/profile/:otherId',component:OtherProfileComponent
+    path:'social/profile',component:OtherProfileComponent
   },
- 
+
   {
-    path:'social/editprofile/:InstaId',component:EditProfileComponent 
-  },
-  {
-    path:'social/deleteprofile/:InstaId',component:DeleteAccountComponent 
+    path:'social/editprofile',component:EditProfileComponent
   },
   {
-    path:'social/logout/:InstaId',component: LogOutComponent
+    path:'social/deleteprofile',component:DeleteAccountComponent
+  },
+  {
+    path:'social/logout',component: LogOutComponent
   },{
-    path:'social/search/:InstaId',component:RightSideBarComponent
+    path:'social/search',component:RightSideBarComponent
   },
   {
     path:'social/resetpassword',component:ResetPasswordComponent

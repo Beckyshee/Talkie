@@ -5,3 +5,8 @@ html,body{
 h1,h2,h3,h4,p,h6{
     letter-spacing: 2px;
 }
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
