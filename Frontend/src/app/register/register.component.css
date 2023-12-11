@@ -1,0 +1,322 @@
+.container{
+    height: 100vh;
+}
+.container-fluid{
+    min-height: 100vh;
+    
+}
+.start-portion{
+    display: flex;
+    
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(15px);
+    /* background-color: #194954; */
+}
+.form-portion{
+   
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 100px;
+    
+}
+input{
+    width: 100%;
+    margin-top: 30px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.329);
+    padding-left: 20px;
+}
+button{
+    width: 100px;
+    height: 30px;
+    margin: 20PX;
+    margin-top: 30px;
+}
+/* .container-fluid{
+    background: url(https://apis.xogrp.com/media-api/images/9c4ed2cb-18dc-429b-b417-5d555e245b0f~rs_768.h);
+   
+} */
+button{
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.329);
+}
+.image-portion{
+    backdrop-filter: blur(10px);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+h2{
+    font-size: 4rem;
+    text-align: center;
+    font-weight: bold;
+    color: #194954;
+}
+span{
+    font-size: 8rem;
+    font-weight: 900;
+}
+.row{
+    backdrop-filter: blur(10px);
+}
+.container-fluid{
+    /* background: url(https://th.bing.com/th/id/R.9f3cfd0b22c567f6811ac8a68685edde?rik=%2f3MBDXGlR0zZYA&riu=http%3a%2f%2fs3.crackedcdn.com%2fphpimages%2farticle%2f3%2f5%2f8%2f584358_v3.gif&ehk=NwuSm1vpsML%2bEEYTs4ggjTIjHrsG19PgtsD%2bdh1nfkM%3d&risl=&pid=ImgRaw&r=0); */
+
+    background-size: cover;
+   
+}
+/* .pic-1,.pic-2,.pic-3,.pic-4{
+    height: 15vh;
+    margin: 20px;
+}
+.pic-1{
+    background: url(https://th.bing.com/th/id/OIP.oFQz63WkaVTjO45SHAAMbgHaKG?w=134&h=183&c=7&r=0&o=5&dpr=1.3&pid=1.7);
+} */
+
+img{
+    width: 100%;
+   
+    height: 100%;
+    
+    border-radius: 2rem;
+    
+    backdrop-filter: blur(2px);
+}
+.pic-1{
+    width: 300px;
+    height: 400px;
+    background-color: aqua;
+    position: absolute;
+    top: 50px;
+    box-shadow: 0 0 30px black;
+    border-radius: 2rem;
+    right: 400px;
+   animation: play-1   3s 1 ease ;
+ 
+   /* transition-delay: 5s; */
+  
+
+}
+
+@keyframes play-1 {
+    0%{
+       
+    right: 0;
+    top: 0px;
+       
+    }
+    100%{
+        right: 400px;
+        top: 50px;
+       
+        
+    }
+    
+    
+}
+
+
+.pic-2{
+    width: 300px;
+    height: 400px;
+    background-color: rgba(103, 193, 0, 0.74);
+    position: absolute;
+    top:5px;
+   
+    right: 150px;
+    box-shadow: 0 0 30px black;
+    border-radius: 2rem;
+    animation: play-2   4s 1 ease ;
+    
+    
+}
+@keyframes play-2 {
+    0%{
+        right: 0px;
+        top: 0px;
+    }100%{
+        right: 150px;
+        
+    }
+}
+
+
+
+.pic-3{
+    width: 300px;
+    height: 400px;
+    background-color: rgba(103, 193, 0, 0.74);
+    position: absolute;
+    top: 335px;
+    
+    right: 150px;
+    box-shadow: 0 0 30px black;
+    border-radius: 2rem;
+    animation: play-3   4s 1  ease ;
+    
+}
+@keyframes play-3 {
+    0%{
+        right: 0px;
+        top: 0px;
+    }100%{
+        right: 150px;
+       top: 335px;
+    }
+}
+.pic-4{
+    width: 300px;
+    height: 400px;
+    background-color: rgba(0, 26, 193, 0.74);
+    position: absolute;
+   top: 170px;
+    
+    right: 520px;
+    box-shadow: 0 0 30px black;
+    border-radius: 2rem;
+    animation: play-4   4s 1 ease ;
+
+}
+@keyframes play-4 {
+    0%{
+        right: 0px;
+        top: 0px;
+    }100%{
+        right: 520px;
+        top: 170px;
+    }
+}
+.pic-5{
+    width: 300px;
+    height: 400px;
+    background-color: rgba(0, 26, 193, 0.74);
+    position: absolute;
+   top: 300px;
+   right: 400px;
+    
+    box-shadow: 0 0 30px black;
+    border-radius: 2rem;
+    animation: play-5   4s 1  ease ;
+}
+@keyframes play-5 {
+    0%{
+        right: 0px;
+        top: 0px;
+    }100%{
+        right: 400px;
+        top: 300px;
+    }
+}
+.pic-6{
+    width: 300px;
+    height: 400px;
+    background-color: rgba(0, 26, 193, 0.74);
+    position: absolute;
+   top: 100px;
+   
+    right: 50px;
+    box-shadow: 0 0 30px black;
+    border-radius: 2rem;
+    animation: play-6   4s 1  ease ;
+}
+@keyframes play-6 {
+    0%{
+        right: 0px;
+        top: 0px;
+    }100%{
+        right: 50px;
+        top: 100px;
+    }
+}
+.pic-7{
+    width: 300px;
+    height: 400px;
+    background: url(https://i.pinimg.com/originals/99/18/ba/9918ba5fda80e92904b88bea450d2141.jpg);
+    background-size: contain;
+    position: absolute;
+   top: 200px;
+    
+    right: 250px;
+    box-shadow: 0 0 30px black;
+    border-radius: 2rem;
+    animation: play-7   4s 1  ease ;
+}
+@keyframes play-7 {
+    0%{
+        right: 0px;
+        top: 0;
+    }100%{
+        right: 250px;
+        top: 200px;
+    }
+}
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+h1{
+    font-size: 6rem;
+    font-weight: 900;
+    color: #ffffff;
+    font-family: 'Pacifico';
+    
+   
+}
+
+.register-login{
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+    backdrop-filter: blur(10px);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+h3{
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: capitalize;
+    color: #ffffff;
+    /* background-color: #194954; */
+    margin: 20px;
+    padding: 10px;
+    letter-spacing: 4px;
+    border-radius: 2rem;
+    font-family: cursive;
+}
+
+p,a{
+    color: #ffffff;
+}
+.start-portion{
+    padding-left: 50px;padding-right: 150px;
+}
+
+@media screen and (max-width:501px){
+    .main-part{
+        display: none;
+    }
+    
+    .container-fluid{
+        background-image: url(https://th.bing.com/th/id/OIP.Ff3dAWZzlQbsVDXazJm2wgHaNK?pid=ImgDet&rs=1);
+    }
+    .start-portion{
+       padding: 0px;
+    }
+    .form-portion{
+        padding: 20px;
+    }
+}

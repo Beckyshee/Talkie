@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+html,body{
+    scroll-behavior: smooth;
+}
+h1,h2,h3,h4,p,h6{
+    letter-spacing: 2px;
+}

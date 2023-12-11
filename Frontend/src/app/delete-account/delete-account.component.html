@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style="display: flex;text-align: center;justify-content: center;flex-direction: column;">
+            <div style="margin-top: 50px;" *ngIf="!isDeleted">
+                <form action="" *ngIf="!isDeletionStarted">
+                    <div class="text-center" style="width: 100%;height: auto;padding: 40px;
+                    background-color:#194954;box-shadow: 0 0 20px black;border-radius: 2rem;">
+                   <!-- <h5 style="color: white;letter-spacing: 3px;">Enter your Email Id to proceed</h5>
+                   <input type="email" placeholder="Enter Email"> -->
+                       
+                        
+                        <div class="text-center">
+                          
+                           <p>Do you really want to delete your account?</p>
+                        
+                           <div class="text-center">
+                                <button class="btn btn-danger m-2" (click)="deleteAccount()">Yes</button>
+                                <button  class="btn btn-success m-2" (click)="cancelAccountDeletion()">No</button>
+                           </div>
+                           
+                        </div>
+                    </div>
+                 </form>
+                 <div *ngIf="isDeletionStarted">
+                    <div>
+                        <h5 style="color: #194954;letter-spacing: 3px;">Your account is being deleted....</h5>
+                    </div>
+                    <div class="spinner-border mt-4" role="status" style="color: #194954;">
+                       
+                      </div>
+                 </div>
+            </div>
+            <div class="alert alert-danger" style="margin-top: 100px;color: #194954;" role="alert" *ngIf="isDeleted">
+               <h3 class="mt-4">Account deleted Successfully...</h3>
+              </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>

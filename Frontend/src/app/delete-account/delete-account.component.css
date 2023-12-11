@@ -1,0 +1,42 @@
+.form-portion{
+   
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 100px;
+    
+    /* background-color:   #194954; */
+}
+input{
+    width: 100%;
+    margin-top: 10px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.329);
+    padding-left: 20px;
+}
+.edit-btn{
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #194954;
+    font-weight: 500;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.329);
+    
+        width: 100px;
+        height: 30px;
+        margin: 20PX;
+        margin-top: 30px;
+        text-align: center;
+   
+}
+p{
+    color: white;
+    margin-top: 30px;
+}

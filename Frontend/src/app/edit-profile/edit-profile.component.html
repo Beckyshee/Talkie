@@ -1,0 +1,96 @@
+
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 sidebar sticky-top" style="background-color: #194954;">
+        <div class="sidebar-inner" style="background-color: #194954;">
+            <h1>Shots</h1>
+
+           <div >
+            <button class="side-btn" routerLink="/social/home/{{userId}}"><i  class="fa-solid fa-house m-2"></i>Home</button>
+           </div>
+           <div>
+            <button class="side-btn"   routerLink="/social/uploadpost/{{userId}}"><i class="fa-solid fa-image m-2"></i>Add Shots</button>
+           </div>
+           <div>
+            <button class="side-btn" routerLink="/social/messages/{{userId}}"><i class="fa-solid fa-message m-2"></i>Messages</button>
+           </div>
+           <div>
+            <button class="side-btn" routerLink="/social/myprofile/{{userId}}"><img style="width: 40px;height: 40px;border-radius: 50%;" src="http://localhost:5000/{{profilepic}}" alt="">
+              Profile</button>
+           </div>
+           <div>
+            <button  routerLink="/social/logout/{{userId}}" class="side-btn" ><i class="fa-solid fa-right-from-bracket m-2"></i>Logout</button>
+           </div>
+           <div class="setting-bar" *ngIf="isSettingsShown">
+            <button class="setting-btn" routerLink="/social/editprofile/{{userId}}"><i class="fa-solid fa-pen-to-square m-2"></i>Edit Profile</button>
+            <button class="setting-btn mt-3"  routerLink="/social/deleteprofile/{{userId}}"  style="background-color: red;color: #ffffff;"><i class="fa-solid fa-trash m-2"></i>Delete Account</button>
+        </div>
+        <div>
+         <button  style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.34);background-color: white;color: #194954;" class="side-btn set-btn" id="setting" (click)="showSettings()"><i class="fa-solid fa-gear m-2"></i>Settings</button>
+        </div>
+        </div>
+    </div>
+   
+    <div class="col-md-10 edit-main">
+        <div class="alert alert-primary" role="alert" *ngIf="isSuccessful">
+            SuccessFully updated
+          </div>
+          <div class="alert alert-danger mb-4" role="alert" *ngIf="notSame">
+            Password must be same
+          </div>
+        <div  *ngIf="!isSuccessful">
+            <form action="" *ngIf="!isPassword">
+                <div class="text-center" style="width: 100%;height: auto;padding: 40px;
+                background-color:#194954;box-shadow: 0 0 20px black;border-radius: 2rem;">
+               <div style="text-align: start;">
+                 <label class="ml-auto" for="">Name</label>
+               </div>
+                    <input [(ngModel)]="profileDetails.Name" name="Name" type="text" placeholder="Name">
+                   <div style="text-align: start;">
+                     <label for="">Email</label>
+                   </div>
+                    <input  [(ngModel)]="profileDetails.Email"  name="Email" type="text" placeholder="Email">
+                    
+                    <div class="text-center">
+                      
+                       <button (click)="editDetails()" class="edit-btn">Submit</button>
+                       <button  class="edit-btn" (click)="cancelEditing()">Cancel</button>
+                    
+                       
+                    </div>
+                </div>
+             </form>
+             <form action="" [formGroup]="resetPassword" (ngSubmit)="changePassword()" *ngIf="isPassword">
+                 <div class="text-center" style="width: 100%;height: auto;padding: 40px;
+                 background-color:#194954;box-shadow: 0 0 20px black;border-radius: 2rem;">
+                
+                     <input formControlName="Password" name="Password" style="margin-top: 30px;"  type="password" placeholder="New Password">
+                    
+                     <input formControlName="Pass1" name="Pass1" style="margin-top: 60px;"  type="password" placeholder="Confirm New Password">
+                     
+                     <div class="text-center">
+                       
+                        <button  class="edit-btn" type="submit">Submit</button>
+
+                        <button  class="edit-btn" (click)="cancelEditing()">Cancel</button>
+                     
+                        
+                     </div>
+                 </div>
+              </form>
+             
+             <button class="text-center big-btn"  *ngIf="!isPassword" (click)="toPassword()">Do you want to change password ?</button>
+     
+        </div>
+
+        
+  
+
+</div>
+
+
+    
+    
+    </div>
+   </div>

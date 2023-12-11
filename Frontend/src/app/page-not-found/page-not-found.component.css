@@ -1,0 +1,28 @@
+.container-fluid{
+    min-height: 100vh;
+    /* background: url(https://lh3.googleusercontent.com/proxy/aAVATs7R5bAbmurdCwfk6xCzAN9SREOxiqeHlhZHmdvPtYcNGRGqw8SpNElaABYxSvkbN8zytRzuGfl6WR7uzTGs4J4brXyHJwWQ2OHkZhjP0-JH1UpvY8PZnbZLtnGVA_5s_PcUpORItJEXevJDJVTa71PKdONpMA=w1200-h630-p-k-no-nu);
+    background-repeat: no-repeat; */
+    
+}
+button{
+    width: 20%;
+    text-align: left;
+   margin-top: 30px;
+   height: 50px;
+   outline: none;
+   border: none;
+   background-color:   #194954;
+   font-size: 1.2rem;
+   text-transform: capitalize;
+   font-weight: bold;
+   letter-spacing: 3px;
+   border-radius: 2rem;
+   color: white;
+   text-align: center;
+
+}
+button:hover{
+    background-color: white;
+    outline: 3px solid #194954;
+    color: #194954;
+}

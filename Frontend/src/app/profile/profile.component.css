@@ -1,0 +1,289 @@
+.sidebar{
+    height: 100vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.34);
+}
+.sidebar-inner{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+button{
+    width: 100%;
+    text-align: left;
+   margin-top: 30px;
+   height: 50px;
+   outline: none;
+   border: none;
+   background-color: #194954;
+   font-size: 1.2rem;
+   text-transform: capitalize;
+   font-weight: bold;
+   letter-spacing: 3px;
+   border-radius: 2rem;
+   color: #ffffff;
+}
+.side-btn:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.34);
+    background-color: #ffffff;
+    color:  #194954;
+    transition: 0.5s ease;
+
+}
+.profile-portion{
+    width: 100%;
+    
+    background-color: #194954;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.34);
+    
+}
+.profile-pic{
+    position: relative;
+    margin: auto;
+   
+}
+.profile-pic img{
+   width: 150px;
+   height: 150px;
+    border-radius: 50%;
+    
+}
+.profile-pic .round{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 2.2rem;
+    border-radius: 50%;
+    background-color: #ffffff;
+   cursor: pointer;
+   
+
+}
+
+.round input[type="file"]{
+    position: absolute;
+    transform: scale(2);
+    opacity: 0;
+    cursor: pointer;
+}
+.profile-pic .round i{
+    color: #194954;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.user-name{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.card{
+    width: 200px;
+    height: 200px;
+}
+.edit-btn{
+   
+   max-width: 150px;
+    font-size: 15px;
+    text-transform: capitalize;
+    background-color: #ffffff;
+    color: #194954;
+    border-radius: 2rem;
+    height: 30px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.377);
+}
+.edit-btn i{
+    font-size: 12px;
+}
+
+.profile{
+    display: flex;
+  
+    flex-direction: row;
+    margin: 13px;
+}
+.profile h6{
+    width: 100%;
+}
+.comment{
+    margin-left: 50px;
+    width: 200px;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.377);
+}
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+h1{
+    color: #ffffff;
+    font-family: 'cookie';
+    font-weight: 900;
+}
+.edit-box{
+    width: 100%;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.358);
+    border-radius: 2rem;
+    margin-top: 100px;
+    background-color: #194954;
+    
+}
+.edit-input{
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.358);
+    border-radius: 2rem;
+    
+}
+.user-name{
+    color: #ffffff;
+    letter-spacing: 3px;
+    font-weight: 900;
+}
+h5,h6{
+    color: white;
+}
+
+.setting-bar{
+    background-color: white;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 0 30px black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 70px;
+    border-radius: 2rem;
+    transition: 0.5s ease;
+}
+.setting-btn{
+    width: 87%;
+    font-size: 15px;
+    margin-top: 5px;
+    border-radius: 0;
+    letter-spacing: 2px;
+    height: 40px;
+    border-radius: 2rem;
+}
+.set-btn{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 90%;
+    margin-top: 0px;
+}
+.setting-bar i{
+    font-size: 12px;
+}
+.follow{
+    cursor: pointer;
+}
+.modal-body h5{
+    color: #194954;
+    letter-spacing: 4px;
+}
+.rem-btn{
+    width: 80px;
+    height: 20px;
+    background-color: #194954;
+    color: #ffffff;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+.followername{
+    display: flex;
+    margin-top: 15px;
+   
+    flex-direction: row;
+    border-radius: 2rem;
+}
+.followername:hover{
+    background-color: #194954;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.358);
+}
+.pic{
+    width: 50px;
+    height: 50px;
+    border-radius: 2rem;
+   
+}
+.pic img{
+    width: 50px;
+    height: 50px;
+    border-radius: 2rem; 
+}
+.nme{
+    width: 350px;
+    height: 50px;
+    
+}
+.nme h6{
+    color: #194954;
+    margin-top: 14px;
+    margin-left: 10px;
+}
+.followername:hover h6{
+    color: #ffffff;
+}
+.del-btn{
+   width: 100px;
+   height: 50px;
+   display: flex;
+   text-align: center;
+   justify-content: center;
+   position: relative;
+}
+.rem-btn{
+    
+    width: 70px;
+    position: absolute;
+    bottom: 14px;
+}
+.modal-content{
+    height: 600px;
+    overflow-y: scroll;
+}
+.followername:hover .rem-btn{
+    background-color: #ffffff;
+    color: #194954;
+}
+.header{
+    display: none;
+}
+.profile-main{
+    padding: 50px;
+}
+.profile-portion{
+    min-height: 300px;
+    max-height: 100%;
+}
+.container-fluid{
+    min-height: 100vh;
+    max-height: 100%;
+}
+@media screen and (max-width:501px) {
+
+    .header{
+       display: inline;
+       position: sticky;
+       top: 0;
+       z-index: 6;
+    }
+    .sidebar{
+        display: none;
+    }
+    .profile-main{
+        padding: 10px;
+    }
+    .card{
+        margin: 13px;
+    }
+}

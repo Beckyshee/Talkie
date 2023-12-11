@@ -1,0 +1,254 @@
+<div class="header">
+  <app-header></app-header>
+</div>
+<div class="container-fluid" >
+    <div class="row">
+      <div class="col-md-2 sidebar sticky-top " style="background-color: #194954;">
+        <div class="sidebar-inner" style="background-color: #194954;">
+            <h1>Shots</h1>
+
+           <div >
+            <button class="side-btn"  routerLink="/social/home/{{userId}}"><i  class="fa-solid fa-house m-2"></i>Home</button>
+           </div>
+           <div>
+            <button class="side-btn"  routerLink="/social/uploadpost/{{userId}}"><i class="fa-solid fa-image m-2"></i>Add Shots</button>
+           </div>
+           <div>
+            <button class="side-btn" routerLink="/social/messages/{{userId}}"><i class="fa-solid fa-message m-2"></i>Messages</button>
+           </div>
+           <div>
+            <button class="side-btn"  style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.34);background-color: #ffffff;color: #194954;" routerLink="/social/myprofile/{{userId}}">
+              <img style="width: 40px;height: 40px;border-radius: 50%;" src="http://localhost:5000/{{profilepic}}" alt="">
+
+              Profile</button>
+           </div>
+           <div>
+            <button (click)="logOut()" class="side-btn" ><i class="fa-solid fa-right-from-bracket m-2"></i>Logout</button>
+           </div>
+           <div class="setting-bar" *ngIf="isSettingsShown">
+            <button class="setting-btn" routerLink="/social/editprofile/{{userId}}"><i class="fa-solid fa-pen-to-square m-2"></i>Edit Profile</button>
+            <button class="setting-btn mt-3"  routerLink="/social/deleteprofile/{{userId}}"  style="background-color: red;color: #ffffff;"><i class="fa-solid fa-trash m-2"></i>Delete Account</button>
+        </div>
+        <div>
+         <button class="side-btn set-btn" id="setting" (click)="showSettings()"><i class="fa-solid fa-gear m-2"></i>Settings</button>
+        </div>
+        </div>
+    </div>
+    <div class="col-md-10 profile-animation" style="z-index: 3;">
+     <div class="row" *ngIf="isMainPage">
+      <div class="col-md-12 profile-main">
+        <div class="profile-portion">
+           <div class="row">
+            <div class="col-md-4">
+                <div class="profile-pic" style="width: 150px;height: 150px;margin-top: 50px;">
+                 
+                    <img *ngIf="ifProfilePicExist" src="http://localhost:5000/{{profilepic}}" alt="">
+                
+                   <div class="round">
+                    <input (change)="profilePicUpload($event)" type="file" name="" id="">
+                    <i class="fas fa-camera "></i>
+                  </div>
+                </div>
+              
+            </div>
+            <div class="col-md-8 " style="margin-top: 50px;min-height: 100px;max-height: 100%;margin-bottom: 30px;">
+                <h3 class="user-name ms-4">{{userDetails.Name}}</h3> 
+                <div class="row mt-4 m-4">
+                  <div class="col-4 ">
+                    <div>
+                        <h5>Shots</h5>
+                    </div>
+                    <div>
+                         <h6>{{postNumber}}</h6>
+                    </div>
+                  </div>
+                  <div class="col-4 follow"  data-bs-toggle="modal" data-bs-target="#following">
+                    <div>
+                      <h5>Followers</h5>
+                    </div>
+                    <div>
+                      <h6>{{following}}</h6>
+                    </div>
+                  </div>
+                  <div class="col-4 follow"  data-bs-toggle="modal" data-bs-target="#followers">
+                    <div>
+                      <h5>Following</h5>
+                    </div>
+                    <div>
+                      <h6>{{followers}}</h6>
+                    </div>
+                  </div>
+                 
+                </div> 
+                
+            </div>
+           </div>
+        </div>
+      </div>
+     
+     </div>
+
+
+     <div class="row" *ngIf="isMainPage">
+      
+           <div class="col-md-12 d-flex flex-row flex-wrap">
+            <div style="cursor: pointer;" (click)="getPostDetails(post.path,post.filename)" (click)="getComments(post.filename)" class="card text-center justify-content-center" *ngFor="let post of posts" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <img src="http://localhost:5000/{{post.path}}" alt="">
+            </div>
+           </div>
+     </div>
+
+     <!-- <div class="row" *ngIf="!isMainPage">
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="edit-box">
+               <label style="color: #ffffff;" for="">Name</label> <br>
+               <input class="edit-input mt-2 mb-4" [(ngModel)]="editingDetails.Name" type="text"> <br>
+          
+              <label style="color: #ffffff;" for="">Gmail</label> <br>
+               <input  class="edit-input mt-2" [(ngModel)]="editingDetails.Email" type="text"> <br>
+               <button style="margin-top: 40px;width: 80px;" (click)="editProfile()" class="edit-btn mt-3">Submit</button>
+               <button style="margin-top: 40px;width: 80px;" (click)="cancel()" class="edit-btn ms-2">cancel</button>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        </div>
+      </div>
+     </div> -->
+        
+    </div>
+    
+    </div>
+    
+    <div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" >
+        <div class="modal-content">
+          <div *ngIf="!openModal" class="alert alert-danger text-center m-2" role="alert">
+            Post Deleted
+          </div>
+          <!-- <div class="modal-header">
+            
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div> -->
+          <div class="modal-body" *ngIf="openModal">
+            <div style="padding: 20px;padding-bottom: 5px;">
+              <img style="width: 100%;min-height: auto;max-height: 300px;" src="http://localhost:5000/{{postPath}}" alt="">
+            </div>
+            <div style="display: flex;flex-direction: row;justify-content: space-between;">
+              <div style="margin-top: 10px;">
+                  <h6 style="color: #194954;">{{likesCount}} Likes and {{commentCount}} comments</h6>
+              </div>
+              <div>
+                <button class="edit-btn" style="width: 60px;background-color: red;margin-top: 10px;" (click)="deletePost(postName)"><i class="fa-solid fa-trash text-light"></i></button>
+
+           
+                <button type="button" style="width: 60px;background-color: green;margin-top: 10px; " class="edit-btn mx-2" data-bs-dismiss="modal"><i class="material-symbols-outlined text-light">
+                  west
+                </i></button>
+              </div>
+            </div>
+           
+          </div>
+          <div  style="height: 250px;overflow-y: scroll;" *ngIf="openModal">
+           
+            <div>
+              <div class="text-center" style="width: 100%;margin-top: 50px;" *ngIf="isCommentPresent">
+                <h5 style="color: #194954;">No comments yet</h5>
+                <span class="material-symbols-outlined">
+                    comments_disabled
+                    </span>
+
+                  </div>
+              <div *ngFor="let comment of comments">
+                <div class="profile">
+                  <div style="width: 40px;height: 40px;border-radius: 50%;text-align: center;">
+                     <img style="width: 40px;height: 40px;border-radius: 50%;" src="http://localhost:5000/{{comment.profilepic}}" alt="">
+                  </div>
+                  <div>
+                    <h6 style="color: #194954;" class="mt-2 ps-2">{{comment.fromName}}</h6>
+                  </div>
+
+                </div>
+                <div class="comment" style="background-color: #194954;">
+                    <h6 class="p-3">{{comment.comment}}</h6>
+                </div>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- following modall -->
+    <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="followers" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h5>Following</h5>
+        <div class="followername" *ngFor="let following of followingDetails">
+          <div class="pic">
+            <img src="http://localhost:5000/{{following.profilepic[0].path}}" alt="">
+          </div>
+          <div class="nme">
+            <h6>{{following.Name}}</h6>
+          </div>
+          <div class="del-btn">
+            <button class="rem-btn" (click)="unFollow(following._id)">Remove</button>
+          </div>
+        </div>
+
+        <div class="text-center" style="margin-top: 100px;"  *ngIf="!isFollowingSomeone">
+          <h6 style="color: #194954;">You are not following anyone</h6>
+          <span style="color: #194954;" class="material-symbols-outlined">
+            sentiment_neutral
+            </span>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- followers modal -->
+<div class="modal fade" id="following" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        <h5>Followers</h5>
+      
+        <div class="followername" *ngFor="let following of followerDetails">
+          <div class="pic">
+            <img src="http://localhost:5000/{{following.profilepic[0].path}}" alt="">
+          </div>
+          <div class="nme">
+            <h6>{{following.Name}}</h6>
+          </div>
+          <div class="del-btn">
+            <button class="rem-btn" (click)="removePeopleWhoFollow(following._id)">Remove</button>
+          </div>
+        </div>
+
+        <div class="text-center" style="margin-top: 100px;" *ngIf="!isFollowedBySomeone">
+          <h6 style="color: #194954;">No one following you</h6>
+          <span style="color: #194954;" class="material-symbols-outlined">
+            sentiment_neutral
+            </span>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+    
+   </div>
+
+

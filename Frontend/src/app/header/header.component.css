@@ -1,0 +1,76 @@
+button{
+    width: 100%;
+    text-align: left;
+   margin-top: 20px;
+   height: 40px;
+   outline: none;
+   border: none;
+   background-color:   #194954;
+   font-size: 14px;
+   text-transform: capitalize;
+   font-weight: bold;
+   letter-spacing: 3px;
+   border-radius: 2rem;
+   color: white;
+
+}
+.side-btn:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.34);
+    background-color: #ffffff;
+    color:  #194954;
+    transition: 0.5s ease;
+
+}
+
+.setting-bar{
+    background-color: white;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 0 30px black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 70px;
+    border-radius: 2rem;
+    transition: 0.5s ease;
+}
+.setting-btn{
+    width: 100%;
+    font-size: 15px;
+    margin-top: 5px;
+    border-radius: 0;
+    letter-spacing: 2px;
+    height: 40px;
+    border-radius: 2rem;
+}
+.set-btn{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 90%;
+    margin-top: 0px;
+}
+.setting-bar i{
+    font-size: 12px;
+}
+.navbar{
+    background-color: #194954;
+}
+.navbar-toggler{
+    
+    width: 60px;
+    margin-top: 0px;
+    background-color: #194954;
+}
+.nav-btn{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    text-align: center;
+    margin-right: 20px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+.navbar h3{
+    font-size: 2rem;
+    font-weight: 900;
+    font-family: 'Pacifico';
+}

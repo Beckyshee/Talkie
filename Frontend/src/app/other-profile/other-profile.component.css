@@ -1,0 +1,143 @@
+button{
+    width: 100%;
+    text-align: left;
+   margin-top: 30px;
+   height: 50px;
+   outline: none;
+   border: none;
+   background-color: #194954;
+   font-size: 1.2rem;
+   text-transform: capitalize;
+   font-weight: bold;
+   letter-spacing: 3px;
+   border-radius: 2rem;
+   color: white;
+}
+.side-btn:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.34);
+    background-color: #ffffff;
+    color:  #194954;
+    transition: 0.5s ease;
+
+}
+
+.profile-pic,.profile-pic-img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.profile{
+    display: flex;
+    flex-direction: row;
+    background-color: #194954;
+    border-radius: 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.34);
+    margin-top: 50px;padding-top: 30px;
+    padding-left: 30px;
+    
+}
+.profile-details{
+    width: 80%;
+    display: flex;
+    text-align: start;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 40px;
+}
+h1{
+    color: #ffffff;
+    font-family: 'Cookie';
+    font-weight: 900;
+}
+.follow-btn{
+    width: 100px;
+    height: 30px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    background-color: #ffffff;
+    border-radius: 1.2rem;
+    text-transform: capitalize;
+    color: #194954;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.34);
+}
+.card{
+    width: 216px;
+    height: 216px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+.sidebar, .sidebar-inner{
+    background-color: #194954;
+}
+h4{
+    color: #ffffff;
+}
+
+.setting-bar{
+    background-color: white;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 0 30px black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 70px;
+    border-radius: 2rem;
+    transition: 0.5s ease;
+}
+.setting-btn{
+    width: 87%;
+    font-size: 15px;
+    margin-top: 5px;
+    border-radius: 0;
+    letter-spacing: 2px;
+    height: 40px;
+    border-radius: 2rem;
+}
+.set-btn{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 90%;
+    margin-top: 0px;
+}
+.setting-bar i{
+    font-size: 12px;
+}
+.top-bar{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.header{
+    display: none;
+  }
+  @media screen and (max-width:501px) {
+  
+    .header{
+       display: inline;
+       position: sticky;
+       top: 0;
+    }
+    input{
+        margin-top: 20px;
+    }
+    .sidebar{
+      display: none;
+    }
+    .profile{
+        padding-left: 5px;
+        margin-top: 20px;
+    }
+    .top-bar{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .right-side-bar{
+        display: none;
+    }
+   
+  
+  }

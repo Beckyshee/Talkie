@@ -1,0 +1,156 @@
+
+<div class="header">
+  <app-header></app-header>
+</div>
+
+
+<!-- navbar for big screen -->
+<div class="container-fluid" >
+    <div class="row">
+        <div class="col-md-2 sidebar sticky-top" style="background-color:    #194954;">
+            <div class="sidebar-inner " style="width: 100%;background-color:    #194954;">
+                <h1 style="color: #ffffff;">Shots</h1>
+
+               <div >
+                <button style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.34);background-color: #ffffff;color: #194954;" routerLink="/social/home/{{userId}}"><i class="fa-solid fa-house m-2"></i>Home</button>
+               </div>
+               <div>
+                <button  class="side-btn" routerLink="/social/uploadpost/{{userId}}"><i class="fa-solid fa-image m-2"></i>Add Shots</button>
+               </div>
+              
+               <div>
+                <button   class="side-btn" routerLink="/social/messages/{{userId}}"><i class="fa-solid fa-message m-2"></i>Messages</button>
+               </div>
+               <div>
+                <button  class="side-btn" routerLink="/social/myprofile/{{userId}}">
+                    <img style="width: 40px;height: 40px;border-radius: 50%;" src="http://localhost:5000/{{profilepic}}" alt="">
+                    Profile</button>
+               </div>
+               <div>
+                <button routerLink="/social/logout/{{userId}}"  class="side-btn"><i class="fa-solid fa-right-from-bracket m-2"></i>Logout</button>
+               </div>
+               <div class="setting-bar" *ngIf="isSettingsShown">
+                   <button class="setting-btn" routerLink="/social/editprofile/{{userId}}"><i class="fa-solid fa-pen-to-square m-2"></i>Edit Profile</button>
+                   <button class="setting-btn mt-3"  routerLink="/social/deleteprofile/{{userId}}"  style="background-color: red;color: #ffffff;"><i class="fa-solid fa-trash m-2"></i>Delete Account</button>
+               </div>
+               <div>
+                <button class="side-btn set-btn" id="setting" (click)="showSettings()"><i class="fa-solid fa-gear m-2"></i>Settings</button>
+               </div>
+            </div>
+        </div>
+        
+        <div class="col-md-7 " *ngIf="!showComment">
+            <div class="row" *ngIf="isFollowingAnyone">
+                
+                    <div class="col-md-12 text-center" >
+                        <h4 style="margin-top: 100px;">Follow others to see their shots</h4>
+                        <span class="material-symbols-outlined mt-4" style="font-size: 3rem;">
+                            photo_library
+                            </span>
+                    </div>
+              
+            </div>
+         <div class="row" >
+            <div class="col-md-12 post-portion" >
+                <div class="post" *ngFor="let posts of allposts , let i=index"  >
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="user-pic">
+                                    <img class="image-fluid" src="http://localhost:5000/{{posts.profilepath}}" alt="">
+                                </div>
+                                <div style="width: 80%;">
+                                   <h3 class="mt-2 text-light">{{posts.name}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4" >
+                        <img style="width: 100%;height: 100%;" src="http://localhost:5000/{{posts.path}}" alt="">
+    
+                    </div>
+                    <div class="col-md-12 mt-4">
+                        <div class="row">
+                           <form action="" class="d-flex row"  >
+                            <div class="col-2">
+                                
+                                <button  (click)="likes(posts.filename)" class="cmnt-btn to-like"><i id="{{posts.filename}}" class="fa-solid fa-heart" style="font-size: 2rem;"></i></button>
+
+                                    <!-- <button *ngIf="isLikePresent" (click)="unLike(posts.filename)" class="cmnt-btn "><span class="material-symbols-outlined ">
+                                        favorite
+                                        </span></button> -->
+                                
+                                
+                             
+                            </div>
+                            <div class="col-6">
+                                <input  [(ngModel)]="commentInput" placeholder="Type your comment"  name="commentInput" class="comment-input" type="text">
+                                
+                            </div>
+                            <div class="col-2">
+                                <button class="cmnt-btn" (click)="addComments(posts.filename,posts.personalId)" ><i style="font-size: 2rem;" class="material-symbols-outlined post-icon">
+                                    send
+                                </i></button>
+                            </div>
+                            <div class="col-2 ">
+                                <button class="cmnt-btn"  (click)="readComments(posts.filename)">
+                                    <i style="font-size: 2rem;" class="material-symbols-outlined">
+                                        comment
+                                    </i>
+                                </button>
+                               
+                            </div>
+                            
+                           </form>
+                          
+                            
+                        </div>
+                        <div >
+                            <p style="color: #ffffff;">{{posts.likescount}} Likes and {{posts.commentsCount}} Comments</p>
+                        </div>
+                     </div>  
+                </div>
+            </div>
+         </div>
+        </div>
+        <div class="col-md-7" *ngIf="showComment" style="min-height: 110vh;max-height: auto;">
+             <div class="row">
+                <div class="col-md-12 cmnt-portion" >
+                    <div  style="margin-bottom: 20px;width: 100%;">
+                         <button class="other-btn" (click)="refresh()">
+                           
+                                Go Back
+                         </button>
+                    </div>
+                    <div class="text-center" style="width: 100%;" *ngIf="isCommentPresent">
+                        <h3 style="color: #194954;">No comments yet</h3>
+                        <span style="color: #194954;" class="material-symbols-outlined">
+                            comments_disabled
+                            </span>
+
+                    </div>
+                     <div *ngFor="let comment of comments" style="margin-top: 40px;" class="comment">
+                        <div class="row comment-portion" style="width: 100%;">
+                            <div class="comment-pic">
+                              <img src="http://localhost:5000/{{comment.fromprofilepic}}" alt="">
+                            </div>
+                            <div class="comment-name">
+                                <h5 class="mt-2 ps-2"  style="color: #194954;">{{comment.fromname}}</h5>
+                            </div>
+
+                        </div>
+                        
+                        <div style="margin: 20px;" class="comment-portion-2">
+                            <h6 >{{comment.comment}}</h6>
+                            <!-- <span *ngIf="isYourComment" class="badge rounded-pill bg-danger mr-auto"><i class="fa-solid fa-trash"></i></span> -->
+                        </div>
+                     </div>
+                     
+                </div>
+             </div>
+        </div>
+        <div class="col-md-3 right-side">
+            <app-right-side-bar class="sticky-top"></app-right-side-bar>
+        </div>
+    </div>
+</div>

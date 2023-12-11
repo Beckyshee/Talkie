@@ -1,0 +1,224 @@
+
+/* .container-fluid{
+    background-color: rgb(18, 17, 17);
+} */
+
+  @import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Cookie&family=Fasthand&family=Pacifico&family=Playfair+Display&family=Poppins:ital,wght@1,100;1,600&family=Roboto+Slab:wght@500&family=Roboto:ital,wght@0,100;0,300;1,100&family=Satisfy&display=swap');
+
+.sidebar{
+    height: 100vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.34);
+}
+.sidebar-inner{
+    width: 100%;
+    height: 100%;
+    background-color: none;
+}
+
+h1{
+    color: #ffffff;
+    font-family: 'Cookie';
+    font-weight: 900;
+}
+
+
+button{
+    width: 100%;
+    text-align: left;
+   margin-top: 30px;
+   height: 50px;
+   outline: none;
+   border: none;
+   background-color:   #194954;
+   font-size: 1.2rem;
+   text-transform: capitalize;
+   font-weight: bold;
+   letter-spacing: 3px;
+   border-radius: 2rem;
+   color: white;
+
+}
+.side-btn:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.34);
+    background-color: #ffffff;
+    color:  #194954;
+    transition: 0.5s ease;
+
+}
+
+.profile-pic{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: bisque;
+}
+.post{
+    box-shadow: 0 0 10px  rgba(0, 0, 0, 0.304);
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 2rem;
+    background-color:   #194954;
+    
+}
+.post button{
+    background-color:   #194954;
+    text-align: center;
+}
+.right-sidebar{
+    position: sticky;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+.user-pic{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    text-align: center;
+   
+    justify-content: center;
+   
+}
+.user-pic img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%
+}
+.cmnt-btn{
+    margin-top: 0;
+    
+}
+
+.comment-input{
+    width: 100%;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 2rem;
+    background-color: rgb(255, 255, 255);
+    box-shadow:  0 0 10px rgba(0, 0, 0, 0.276);
+    padding-left: 10px;
+}
+button span{
+    font-size: 2rem;
+}
+button i{
+    font-size: 1.2rem;
+}
+.other-btn{
+   
+    height: 40px;
+   border-radius: 2rem;
+    background-color: #194954;
+    text-align: center;
+    font-size: 15px;
+    width: 100px;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.363);
+    text-transform: capitalize;
+}
+.comment-pic,.comment-pic img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.comment-portion{
+    display: flex;
+    flex-direction: row;
+}
+.comment-name{
+    width: 80%;
+    text-align: start;
+    justify-content: center;
+    flex-direction: row;
+   
+}
+/* .comment{
+    background-color: #ece8d9;
+    width: 65%;
+    padding: 30px;
+} */
+.comment-portion-2{
+    width: 65%;
+    padding: 10px;
+    border-radius: 2rem;
+    /* background-color: rgb(190, 190, 190); */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.322);
+    background-color:    #194954;
+    color: white;
+}
+.likes{
+    color: red;
+    
+}
+
+
+.setting-bar{
+    background-color: white;
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 0 30px black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 70px;
+    border-radius: 2rem;
+    transition: 0.5s ease;
+}
+.setting-btn{
+    width: 87%;
+    font-size: 15px;
+    margin-top: 5px;
+    border-radius: 0;
+    letter-spacing: 2px;
+    height: 40px;
+    border-radius: 2rem;
+}
+.set-btn{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 90%;
+    margin-top: 0px;
+}
+.setting-bar i{
+    font-size: 12px;
+}
+
+.header{
+    display: none;
+}
+.post-portion{
+    padding-left: 150px;
+    padding-right: 150px;
+}
+.cmnt-portion{
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 50px;
+}
+
+/* media query */
+@media screen and (max-width:501px) {
+
+    .header{
+        display: inline;
+        position: sticky;
+        top: 0;
+     }
+    .sidebar{
+        display: none;
+    }
+    .post-portion{
+        padding: 5px;
+    }
+    .post{
+        margin: 10px;
+    }
+    .cmnt-portion{
+        padding: 10px;
+    }
+    .right-side{
+        display: none;
+    }
+}

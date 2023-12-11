@@ -1,0 +1,152 @@
+<div class="header">
+    <app-header></app-header>
+  </div>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 sidebar ">
+        <div class="sidebar-inner">
+            <h1>Shots</h1>
+
+           <div >
+            <button routerLink="/social/home/{{userId}}" class="side-btn"><i  class="fa-solid fa-house m-2"></i>Home</button>
+           </div>
+           <div>
+            <button  class="side-btn" routerLink="/social/uploadpost/{{userId}}"><i class="fa-solid fa-image m-2"></i>Add Shots</button>
+           </div>
+           <div>
+            <button routerLink="/social/messages/{{userId}}" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.34);background-color: #ffffff;color: #194954;"><i class="fa-solid fa-message m-2"></i>Messages</button>
+           </div>
+           <div>
+            <button class="side-btn" routerLink="/social/myprofile/{{userId}}">
+                <img style="width: 40px;height: 40px;border-radius: 50%;" src="http://localhost:5000/{{profilepic}}" alt="">
+
+                Profile</button>
+           </div>
+           <div>
+            <button  routerLink="/social/logout/{{userId}}" class="side-btn" ><i class="fa-solid fa-right-from-bracket m-2"></i>Logout</button>
+           </div>
+           <div class="setting-bar" *ngIf="isSettingsShown">
+            <button class="setting-btn" routerLink="/social/editprofile/{{userId}}"><i class="fa-solid fa-pen-to-square m-2"></i>Edit Profile</button>
+            <button class="setting-btn mt-3"  routerLink="/social/deleteprofile/{{userId}}"  style="background-color: red;color: #ffffff;"><i class="fa-solid fa-trash m-2"></i>Delete Account</button>
+        </div>
+        <div>
+         <button class="side-btn set-btn" id="setting" (click)="showSettings()"><i class="fa-solid fa-gear m-2"></i>Settings</button>
+        </div>
+        </div>
+        
+    </div>
+    <div class="col-md-10 message">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-3  inbox " >
+                        <div *ngIf="isStarting">
+                          <div class="top-portion">
+                            <div>
+                                <h2 style="color: #ffffff;">Inbox</h2>
+                              </div>
+                              <div>
+                                <button (click)="addPeople()" class="follow-btn">Add</button>
+                              </div>
+                          </div>
+                        <input   [(ngModel)]="searchTerm" name="searchTerm" class="search-box" type="text">
+                        <div (click)="startChat(chat._id)"  (click)="getMessages(chat._id)" class="inbox-2" style="margin-top: 30px;" *ngFor="let chat of individualChatHead|search:searchTerm:'Name'">
+                            <div class="profile-pic">
+                                <img src="http://localhost:5000/{{chat.profilepic[0].path}}" alt="">
+
+                            </div>
+                            <div class="profile-name">
+                                <h5 >{{chat.Name}}</h5>
+                            </div>
+                        </div>
+                        </div>
+
+                       <div *ngIf="!isStarting">
+                        <div class="top-portion">
+                            <div>
+                                <h2 style="color: #ffffff;">Find</h2>
+                              </div>
+                              <div>
+                                <button (click)="addPeople()" class="follow-btn">Back</button>
+                              </div>
+                          </div>
+                        <input  [(ngModel)]="searchTerm" name="searchTerm" class="search-box" type="text">
+
+                        <div class="inbox-2" style="margin-top: 30px;"  (click)="startMessage(chats._id)" *ngFor="let chats of followHeads|search:searchTerm:'Name'">
+                            <div class="profile-pic">
+                                <img src="http://localhost:5000/{{chats.profilepic[0].path}}" alt="">
+                            </div>
+                            <div class="profile-name">
+                                <h5>{{chats.Name}}</h5>
+                            </div>
+                        </div>
+                       </div>
+                    </div>
+                   
+                    <div class="col-9 " *ngIf="isChatSidePresent">
+                        <div class="nav-portion ">
+                        <div class="profile-pic">
+                            <img src="http://localhost:5000/{{individualChatDetails.profilepic[0].path}}" alt="">
+
+                        </div>
+                        <div class="profile-name">
+                            <h5>{{individualChatDetails.Name}}</h5>
+                        </div>
+                        </div>
+                        
+                        <div class="message-portion">
+                           
+                            <div class="messages">
+                                <div class="text-center pt-4">
+                                    <p>The chats are end to end encrypted</p>
+                                    <span class="material-symbols-outlined">
+                                        lock
+                                        </span>
+                                </div>
+                               
+                                    <div class="chats"  *ngFor="let message of final">
+
+                                        <p style="letter-spacing: 2px;margin-bottom: 5px;">{{message.fromWho}}</p>
+                                        <h6 id="from">{{message.message}}</h6>
+                                        
+                                    </div>
+                                   
+                           
+                                
+                                
+                                 
+                            </div>
+
+                        </div>
+                        <div class="sending-portion">
+                            <div class="row">
+                               
+                                    <div class="col-10">
+                                        <form action="">
+                                            <input [(ngModel)]="message" name="message" class="chat-input" type="text">
+
+                                        </form>
+                                     </div>
+                                    
+                             
+                                <div class="col-2">
+                                    <button [disabled]="isMessagePresent" class="send-btn" (click)="sendMessage(individualChatDetails._id)"><span class="material-symbols-outlined">
+                                      send
+                                      </span></button>
+                              </div>
+                            </div>
+                        </div>
+
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+   </div>
+
+   

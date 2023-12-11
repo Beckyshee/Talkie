@@ -1,0 +1,156 @@
+.file-input {
+    display: none;
+  }
+
+
+/* sidebar portion */
+  .sidebar{
+    height: 100vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.34);
+}
+.sidebar-inner{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+}
+h1{
+  color: #ffffff;
+  font-family: 'Cookie';
+  font-weight: 900;
+}
+
+button{
+  width: 100%;
+  text-align: left;
+ margin-top: 30px;
+ height: 50px;
+ outline: none;
+ border: none;
+ background-color:#194954;
+ font-size: 1.2rem;
+ text-transform: capitalize;
+ font-weight: bold;
+ letter-spacing: 3px;
+ border-radius: 2rem;
+ color: #ffffff;
+}
+.side-btn:hover{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.34);
+  background-color: #ffffff;
+  color:  #194954;
+  transition: 0.5s ease;
+
+}
+
+
+.upload-portion{
+  min-height: 100vh;
+  max-height: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+ /* background: url('https://i.pinimg.com/originals/dd/2c/7a/dd2c7a1e721064561bd4d437d0819bcb.png'); */
+ background-size: cover;
+ background-repeat: no-repeat;
+
+}
+.input-btn{
+  position: relative;
+  width: 50%;
+  height: 300px;
+  padding: 11px 16px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1.5;
+  border-radius: 3px;
+  color: rgb(255, 255, 255);
+  background-color: none;
+  overflow: hidden;
+  border: 0;
+  box-shadow: 0 0 20px black;
+  background-color:  #194954;
+  border-radius: 2rem;
+}
+.input-btn input[type="file"]{
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: scale(3);
+  height: 100px;
+  opacity: 0;
+}
+.input-btn span{
+  font-size: 6rem;
+  box-shadow: 0 0 10px black;
+  border-radius: 2rem;
+  
+}
+span{
+  cursor: pointer;
+}
+.upload-btn{
+  width: 300px;
+  height: 40px;
+  border: 0;
+  background-color: black;
+  color: white;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+.setting-bar{
+  background-color: white;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 0 30px black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 70px;
+  border-radius: 2rem;
+  transition: 0.5s ease;
+}
+.setting-btn{
+  width: 87%;
+  font-size: 15px;
+  margin-top: 5px;
+  border-radius: 0;
+  letter-spacing: 2px;
+  height: 40px;
+  border-radius: 2rem;
+}
+.set-btn{
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 90%;
+  margin-top: 0px;
+}
+.setting-bar i{
+  font-size: 12px;
+}
+.header{
+  display: none;
+}
+@media screen and (max-width:501px) {
+
+  .header{
+     display: inline;
+     position: sticky;
+     top: 0;
+  }
+  input{
+      margin-top: 20px;
+  }
+  .sidebar{
+    display: none;
+  }
+ .input-btn{
+  width: 100%;
+  
+ }
+ .upload-portion{
+  display: flex;
+ 
+ }
+}
