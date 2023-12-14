@@ -56,7 +56,7 @@ button{
     background-color: #194954;
 }
 .navbar-toggler{
-    
+
     width: 60px;
     margin-top: 0px;
     background-color: #194954;
@@ -74,3 +74,19 @@ button{
     font-weight: 900;
     font-family: 'Pacifico';
 }
+
+
+.navbar li
+{
+      visibility: visible;
+}
+
+
+/* @media screen and (max-width:20px) {
+  .navbar{
+  z-index: 1000;
+}
+
+
+
+} */
