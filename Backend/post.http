@@ -1,0 +1,80 @@
+### create post
+post http://localhost:5400/post/posts
+Content-Type: application/json
+
+{
+    "imageUrl": "https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "content": "A nice day to live",
+      "UserID": "b433cffa-75cf-4750-8a50-79a1a1120b65"
+}
+
+
+### create post
+post http://localhost:5400/post/posts
+Content-Type: application/json
+
+{
+    "imageUrl": "https://images.unsplash.com/photo-1461800919507-79b16743b257?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "content": "Is yet another beautiful Morning",
+    "UserID": "f767882e-169b-4bf7-b399-a57bb9abda22"
+}
+
+
+
+###
+#fetching all posts
+GET http://localhost:5400/post/fetchAllPosts
+Content-Type: application/json
+
+
+
+###
+#fetching a single posts
+GET http://localhost:5400/post/Posts/6945829b-171f-4bce-8cdb-861acba4ec7b
+Content-Type: application/json
+
+###
+#Deleting a post
+DELETE http://localhost:5400/post/posts/6945829b-171f-4bce-8cdb-861acba4ec7b
+Content-Type: application/json
+
+
+###
+#updating a post
+PUT http://localhost:5400/post/posts/dff023ad-d2e5-4cd6-8745-6cc035dd2210
+Content-Type: application/json
+
+{
+    "imageUrl": "https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "content": "A nice day ",
+    "createdAt": ""
+}
+
+
+###
+#like a post
+post http://localhost:5400/post/posts/5c01e0af-7a78-4988-8c0f-f3fc9dd232a6/like
+Content-Type: application/json
+
+{
+     "PostID": "dff023ad-d2e5-4cd6-8745-6cc035dd2210",
+      "UserID": "b433cffa-75cf-4750-8a50-79a1a1120b65"
+}
+
+
+
+###
+#getAllLikes
+GET http://localhost:5400/post/posts/dff023ad-d2e5-4cd6-8745-6cc035dd2210/likes
+Content-Type: application/json
+
+
+###
+#Follow a user
+post http://localhost:5400/user/users/follow
+Content-Type: application/json
+
+{
+     "following_user_id": "0732a5a2-d46a-4bb3-88ea-4b095d28c127",
+      "followed_user_id": "b433cffa-75cf-4750-8a50-79a1a1120b65"
+}

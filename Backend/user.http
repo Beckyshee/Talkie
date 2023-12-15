@@ -1,0 +1,49 @@
+### Register User
+post http://localhost:5400/user/register
+Content-Type: application/json
+
+{
+    "name":"Daniel",
+    "email":"gamemy177@gmail.com",
+    "password":"12345678"
+    
+}
+
+
+###
+#login user
+POST http://localhost:5400/user/login
+Content-Type: application/json
+
+{
+    "email":"gamemy177@gmail.com",
+    "password":"12345678"
+
+}
+
+###
+#Soft Delete user
+PUT http://localhost:5400/user/soft-delete/b637bc2a-1d23-41ea-a967-a0839661c7f7
+Content-Type: application/json
+token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiJiNjM3YmMyYS0xZDIzLTQxZWEtYTk2Ny1hMDgzOTY2MWM3ZjciLCJOYW1lIjoiQmVja3kgV2hvIiwiRW1haWwiOiJiZWNreXdob0B5b3BtYWlsLmNvbSIsIlBhc3N3b3JkIjoiJDJiJDA1JEdzNzFiL1RJQ2xDeGlQNHRJZjk1U09xUEJNbURURkNNUTNLcmdIV1ZPWXdibUs2NnRPZ2hHIiwiV2VsY29tZWQiOmZhbHNlLCJpc0RlbGV0ZWQiOnRydWUsImlhdCI6MTcwMjYzNjA2MCwiZXhwIjoxNzAyNjM5NjYwfQ.g4xz8eiL57-FAfp6_zbFMbFeVoYj0T8v5HjqChX8m3U
+
+
+#fetchsingleuser
+###
+GET http://localhost:5400/user/fetchSingleUser/f767882e-169b-4bf7-b399-a57bb9abda22
+Content-Type: application/json
+
+
+
+
+###
+#check user details
+GET http://localhost:5400/user/check_user_details 
+
+
+#getallusers ---works
+###
+GET http://localhost:5400/user/fetchAllUsers/
+Content-Type: application/json
+
+

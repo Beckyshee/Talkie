@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import mssql from "mssql";
+import mssql, { pool } from "mssql";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { v4 } from "uuid";
@@ -11,7 +11,7 @@ import { ExtendedUser } from "../middleware/verifyToken";
 //register user
 export const registerUser = async (req: Request, res: Response) => {
   try {
-    let { Name, Email, Password } = req.body;
+    let { name, email, password } = req.body;
 
     const { error } = userRegisterValidationSchema.validate(req.body);
 
@@ -19,8 +19,8 @@ export const registerUser = async (req: Request, res: Response) => {
       return res.status(400).json({ error: error.details[0].message });
     }
 
-    let userID = v4();
-    const hashedPwd = await bcrypt.hash(Password, 5);
+    let UserID = v4();
+    const hashedPwd = await bcrypt.hash(password, 5);
 
     const pool = await mssql.connect(sqlConfig);
 
@@ -30,10 +30,10 @@ export const registerUser = async (req: Request, res: Response) => {
 
     const data = await pool
       .request()
-      
-      .input("Name", mssql.VarChar, Name)
-      .input("Email", mssql.VarChar, Email)
-     
+      .input("userID", mssql.VarChar, UserID)
+      .input("Name", mssql.VarChar, name)
+      .input("Email", mssql.VarChar, email)
+
       .input("Password", mssql.VarChar, hashedPwd)
       .execute("registerUser");
 
@@ -42,7 +42,11 @@ export const registerUser = async (req: Request, res: Response) => {
     return res.status(200).json({
       message: "User registered successfully",
     });
-  } catch (error) {
+    
+  } 
+  catch (error) {
+    console.log(error);
+    
     return res.json({
       error: error,
     });
@@ -52,7 +56,7 @@ export const registerUser = async (req: Request, res: Response) => {
 //login user
 export const loginUser = async (req: Request, res: Response) => {
   try {
-    const { Email, Password } = req.body;
+    const { email, password } = req.body;
 
     const { error } = userLoginValidationSchema.validate(req.body);
 
@@ -65,13 +69,14 @@ export const loginUser = async (req: Request, res: Response) => {
     let user = await (
       await pool
         .request()
-        .input("Email", mssql.VarChar, Email)
-        .input("Password", mssql.VarChar, Password)
+        .input("email", mssql.VarChar, email)
+        .input("password", mssql.VarChar, password)
         .execute("loginUser")
     ).recordset;
+console.log(user);
 
     if (user.length === 1) {
-      const correctPwd = await bcrypt.compare(Password, user[0].Password);
+      const correctPwd = await bcrypt.compare(password, user[0].Password);
 
       if (!correctPwd) {
         return res.status(401).json({
@@ -158,6 +163,43 @@ export const checkUserDetails = async (req: ExtendedUser, res: Response) => {
   if (req.info) {
     return res.json({
       info: req.info,
+    });
+  }
+};
+
+export const softDeleteUser = async (req: Request, res: Response) => {
+  try {
+    const { userID } = req.params;
+console.log(req.params);
+ const pool = await mssql.connect(sqlConfig);
+    // Check if the user exists
+    const userExists = await pool
+      .request()
+      .input("UserID", userID)
+      .execute("checkUserExists");
+// console.log(userExists);
+
+    if (userExists.recordset.length === 0) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
+    // Perform soft delete by updating the isDeleted field
+    const result = await pool
+      .request()
+      .input("UserID", userID)
+      .execute("softDeleteUser"); // Replace with your actual stored procedure for soft delete
+
+    console.log(result);
+
+    return res.status(200).json({
+      message: "Soft Delete Successful",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      error: error,
     });
   }
 };

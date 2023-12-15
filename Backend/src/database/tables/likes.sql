@@ -1,0 +1,11 @@
+CREATE TABLE Likes (
+    LikeID INT PRIMARY KEY IDENTITY(1,1),
+    PostID VARCHAR(255),
+    UserID VARCHAR(255),
+    CONSTRAINT FK_Likes_Post FOREIGN KEY (PostID) REFERENCES Posts(PostID),
+    CONSTRAINT FK_Likes_User FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+
+USE Talky2;
+drop table Likes
+SELECT * FROM Likes;
