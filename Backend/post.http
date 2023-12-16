@@ -78,3 +78,35 @@ Content-Type: application/json
      "following_user_id": "0732a5a2-d46a-4bb3-88ea-4b095d28c127",
       "followed_user_id": "b433cffa-75cf-4750-8a50-79a1a1120b65"
 }
+
+
+#create comment
+###
+post http://localhost:5400/comment/create
+Content-Type: application/json
+
+{
+  "PostID": "dff023ad-d2e5-4cd6-8745-6cc035dd2210",
+  "UserID": "0732a5a2-d46a-4bb3-88ea-4b095d28c127",
+  "CommentContent": "This is a test comment"
+}
+
+
+#getallcomments from a post
+###
+GET http://localhost:5400/comment/comments/dff023ad-d2e5-4cd6-8745-6cc035dd2210
+Content-Type: application/json
+
+
+#create reply
+###
+post http://localhost:5400/comment/reply
+Content-Type: application/json
+
+{
+  "PostID": "dff023ad-d2e5-4cd6-8745-6cc035dd2210",
+  "UserID": "0732a5a2-d46a-4bb3-88ea-4b095d28c127",
+  "CommentContent": "yes it is a atest comment",
+  "comment_replied_to_id": "06dd5591-21b8-4484-aee8-c8d1e4f7da47"
+}
+ 

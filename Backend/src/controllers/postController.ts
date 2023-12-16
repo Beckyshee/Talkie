@@ -279,3 +279,91 @@ export const getFollowings = async (req: Request, res: Response) => {
     });
   }
 };
+
+// Controller for creating a new comment
+export const createComment = async (req: Request, res: Response) => {
+  try {
+    const CommentID = v4();
+    const {  PostID, UserID, CommentRepliedToID, CommentContent } = req.body;
+    const CreatedAt = new Date().toISOString()
+        const pool = await mssql.connect(sqlConfig);
+
+
+    const result = await pool
+      .request()
+      .input("CommentID", CommentID)
+      .input("PostID", PostID)
+      .input("UserID", UserID)
+      .input("CommentRepliedToID", CommentRepliedToID)
+      .input("CommentContent", CommentContent)
+      .input("CreatedAt", CreatedAt)
+      .execute("createComment");
+
+    console.log(result);
+
+    return res.status(200).json({
+      message: "Comment created successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      error: error,
+    });
+  }
+};
+
+// Controller for fetching all comments for a post
+export const getAllComments = async (req: Request, res: Response) => {
+  try {
+    const { PostID } = req.params;
+    const pool = await mssql.connect(sqlConfig);
+
+    const comments = (
+      await pool
+        .request()
+        .input("PostID", PostID)
+        .execute("getAllComments")
+    ).recordset;
+
+    return res.status(200).json({
+      comments,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      error: error,
+    });
+  }
+};
+
+// Controller for creating a reply to a comment
+export const createReply = async (req: Request, res: Response) => {
+  try {
+    const CommentID = v4();
+    const {  PostID, UserID, CommentRepliedToID, CommentContent } = req.body;
+    const CreatedAt = new Date().toISOString();
+     const pool = await mssql.connect(sqlConfig);
+
+    const result = await pool
+      .request()
+      .input("CommentID", CommentID)
+      .input("PostID", PostID)
+      .input("UserID", UserID)
+      .input("CommentRepliedToID", CommentRepliedToID)
+      .input("CommentContent", CommentContent)
+      .input("CreatedAt", CreatedAt)
+      .execute("createReply");
+
+    console.log(result);
+
+    return res.status(200).json({
+      message: "Reply created successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      error: error,
+    });
+  }
+};
+

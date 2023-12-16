@@ -13,3 +13,4 @@ CREATE TABLE comment (
 
 
 USE Talky2;
+SELECT *FROM comment;
