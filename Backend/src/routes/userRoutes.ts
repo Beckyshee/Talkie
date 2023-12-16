@@ -9,7 +9,7 @@ import {
   registerUser,
   softDeleteUser,
 } from "../controllers/userController";
-import { getFollowers, getFollowings, toggleFollowUser } from "../controllers/postController";
+import { getFollowers, getFollowings, toggleFollowUser } from "../controllers/userController";
 
 const user_router = Router();
 

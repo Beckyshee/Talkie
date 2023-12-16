@@ -7,3 +7,5 @@ CREATE TABLE Follows (
     CONSTRAINT FK_Follows_FollowedUser FOREIGN KEY (FollowedUserID) REFERENCES Users(UserID)
 );
 use Talky2;
+select * from follows;
+drop table follows;

@@ -69,17 +69,6 @@ GET http://localhost:5400/post/posts/dff023ad-d2e5-4cd6-8745-6cc035dd2210/likes
 Content-Type: application/json
 
 
-###
-#Follow a user
-post http://localhost:5400/user/users/follow
-Content-Type: application/json
-
-{
-     "following_user_id": "0732a5a2-d46a-4bb3-88ea-4b095d28c127",
-      "followed_user_id": "b433cffa-75cf-4750-8a50-79a1a1120b65"
-}
-
-
 #create comment
 ###
 post http://localhost:5400/comment/create

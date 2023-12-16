@@ -156,8 +156,6 @@ export const getSingleUser = async (req: Request, res: Response) => {
 };
 
 
-
-
 //checkUser Details
 export const checkUserDetails = async (req: ExtendedUser, res: Response) => {
   if (req.info) {
@@ -167,6 +165,8 @@ export const checkUserDetails = async (req: ExtendedUser, res: Response) => {
   }
 };
 
+
+//soft delete
 export const softDeleteUser = async (req: Request, res: Response) => {
   try {
     const { userID } = req.params;
@@ -203,3 +203,116 @@ console.log(req.params);
     });
   }
 };
+
+
+
+
+export const getFollowers = async (req: Request, res: Response) => {
+  try {
+    const { followed_user_id } = req.params;
+    const pool = await mssql.connect(sqlConfig);
+
+    
+
+    // const followers = (
+    //   await pool
+    //     .request()
+    //     .input("followed_user_id", mssql.VarChar, followed_user_id)
+    //     .execute("fetchFollowers")
+    // ).recordset;
+     const result = await pool
+       .request()
+       .input("followed_user_id", followed_user_id)
+       .execute("fetchFollowers");
+
+     const followers = result.recordset.map((row) => row.UserID);
+
+    return res.status(200).json({
+      followers,
+    });
+  } catch (error) {
+    return res.json({
+      error,
+    });
+  }
+};
+
+export const getFollowings = async (req: Request, res: Response) => {
+  try {
+    const { following_user_id } = req.params;
+    const pool = await mssql.connect(sqlConfig); // Make sure to import or define sqlConfig
+
+    const followings = (
+      await pool
+        .request()
+        .input("following_user_id", mssql.VarChar, following_user_id)
+        .execute("fetchFollowings")
+    ).recordset;
+
+    return res.status(200).json({
+      followings,
+    });
+  } catch (error) {
+    return res.json({
+      error,
+    });
+  }
+};
+
+
+export const toggleFollowUser = async (req: Request, res: Response) => {
+  console.log(req.body);
+
+  try {
+    const { following_userID, followed_userID } = req.body;
+    const pool = await mssql.connect(sqlConfig);
+
+    const relationExists = (await pool
+      .request()
+      .input("following_userID", mssql.VarChar, following_userID)
+      .input("followed_userID", mssql.VarChar, followed_userID)
+      .query(
+        "SELECT * FROM Followers WHERE following_userID = @following_userID AND followed_userID = @followed_userID"
+      )) as { recordset: any[] };
+    let result;
+
+    if (relationExists.recordset.length > 0) {
+      result = await pool
+        .request()
+        .input("following_userID", mssql.VarChar, following_userID)
+        .input("followed_userID", mssql.VarChar, followed_userID)
+        .execute("unfollowUser");
+    } else {
+      const followerID = v4();
+      result = await pool
+        .request()
+        .input("followerID", mssql.VarChar, followerID)
+        .input("following_userID", mssql.VarChar, following_userID)
+        .input("followed_userID", mssql.VarChar, followed_userID)
+        .execute("followUser");
+    }
+
+    console.log(result);
+
+    if (result.rowsAffected[0] > 0) {
+      const actionMessage =
+        relationExists.recordset.length > 0
+          ? "User Unfollowed"
+          : "User Followed";
+      return res.status(200).json({
+        message: actionMessage,
+      });
+    } else {
+      return res.status(404).json({
+        message: "Something went wrong, user not followed",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+
+    return res.json({
+      error,
+    });
+  }
+};
+
