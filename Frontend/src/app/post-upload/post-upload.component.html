@@ -43,13 +43,30 @@
 
 
       <div style="width: 100%;"  *ngIf="!isAdded "  class="text-center">
-        <button class="input-btn ">
+
+
+
+
+ <form [formGroup]="postForm" (ngSubmit)="sharePost()">
+    <button class="input-btn ">
           <input  type="file" (change)="onFileSelected($event)" accept=".jpg, .jpeg, .png">
           <span class="material-symbols-outlined">
             add_photo_alternate
             </span>
         </button>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Message</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="message" placeholder="What's your thoughts?">
+
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
       </div>
+
 
       </div>
     </div>

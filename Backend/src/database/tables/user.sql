@@ -1,6 +1,6 @@
 -- CREATE DATABASE Talky;
 
--- USE Talky;
+-- USE Talky2;
 
 -- User table
 CREATE TABLE Users (

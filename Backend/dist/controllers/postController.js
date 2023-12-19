@@ -19,21 +19,30 @@ const sqlConfig_1 = require("../config/sqlConfig");
 const dbHelpers_1 = __importDefault(require("../dbHelpers/dbHelpers"));
 const createPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        // Generate a unique PostID using the v4 function
         const PostID = (0, uuid_1.v4)();
+        // Destructure values from the request body
         const { UserID, content, imageUrl } = req.body;
+        console.log("Request body: ", req.body);
+        // Get the current timestamp for createdAt
         const createdAt = new Date().toISOString();
-        yield dbHelpers_1.default.execute("createPost", {
+        // Use dbHelper to execute the "createPost" function with the provided parameters
+        const result = yield dbHelpers_1.default.execute("createPost", {
             UserID,
             PostID,
             imageUrl,
             content,
             createdAt,
         });
-        return res.status(200).json({ message: "post created successfully" });
+        console.log("Database result: ", result);
+        // Respond with a success message
+        return res.status(200).json({ message: "Post created successfully" });
     }
     catch (error) {
-        return res.json({
-            error: error,
+        // Handle errors and respond with an error message
+        console.error("Error creating post:", error);
+        return res.status(500).json({
+            error: "Internal Server Error",
         });
     }
 });

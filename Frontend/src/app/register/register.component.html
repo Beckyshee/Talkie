@@ -8,9 +8,9 @@
              <form action="" [formGroup]="registerForm" (ngSubmit)="registerUser()">
                 <div class="text-center" style="width: 100%;height: auto;padding: 40px;
                 background-color:#194954;box-shadow: 0 0 20px black;border-radius: 2rem;">
-                    <input formControlName="Name" name="Name" type="text" placeholder="Name">
-                    <input formControlName="Email" name="Email" type="text" placeholder="Email">
-                    <input formControlName="Password" name="Password" type="password" placeholder="Password">
+                    <input formControlName="name" name="Name" type="text" placeholder="Name">
+                    <input formControlName="email" name="Email" type="text" placeholder="Email">
+                    <input formControlName="password" name="Password" type="password" placeholder="Password">
                     <input formControlName="pass2" name="pass2" type="password" placeholder="Confirm Password">
                     <div class="text-center">
                        <button routerLink="/social/login">Login</button>
@@ -27,23 +27,23 @@
     <div class="row">
         <div class="start-portion" >
             <div  *ngIf="!isRegistered"  class="col-md-6 form-portion" style="display: flex;text-align: center;justify-content: center;flex-direction: column;">
-              
+
                     <form action="" [formGroup]="registerForm" (ngSubmit)="registerUser()">
                        <div class="text-center" style="width: 100%;height: auto;padding: 40px;
                        background-color:#194954;box-shadow: 0 0 20px black;border-radius: 2rem;">
-                           <input formControlName="Name" name="Name" type="text" placeholder="Name">
-                           <input formControlName="Email" name="Email" type="text" placeholder="Email">
-                           <input formControlName="Password" name="Password" type="password" placeholder="Password">
+                           <input formControlName="name" name="Name" type="text" placeholder="Name">
+                           <input formControlName="email" name="Email" type="text" placeholder="Email">
+                           <input formControlName="password" name="Password" type="password" placeholder="Password">
                            <input formControlName="pass2" name="pass2" type="password" placeholder="Confirm Password">
                            <div class="text-center">
-                             
+
                               <button type="submit">Register</button>
                               <p>{{invalidDetails}}</p>
                               <p>Already have an account? <a routerLink="/social/login" href="">Login</a></p>
                            </div>
                        </div>
                     </form>
-              
+
 
             </div>
             <div class="col-md-6 form-portion text-center" *ngIf="isRegistered" style="display: flex;text-align: center;justify-content: center;flex-direction: column;">
@@ -52,10 +52,10 @@
                 </div>
                 <div class="spinner-border mt-4" role="status" style="color: #194954;">
 
-                   
-                    
+
+
                   </div>
-                  
+
 
             </div>
             <div class="col-md-6 main-part">

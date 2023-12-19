@@ -16,46 +16,47 @@ export class RegisterComponent {
   constructor(private fb:FormBuilder,private api:ApiService,private route:Router){}
 
   registerForm=this.fb.group({
-    Name:['',[Validators.required]],
-    Email:['',[Validators.required,Validators.email]],
-    Password:['',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z/d$@$!%*?&].{8,}')]],
+    name:['',[Validators.required]],
+    email:['',[Validators.required,Validators.email]],
+    password:['',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z/d$@$!%*?&].{8,}')]],
     pass2:['',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z/d$@$!%*?&].{8,}')]]
 
   })
-  registerUser(){
+  registerUser() {
+          console.log(this.registerForm.value);
+
     if(this.registerForm.valid){
-      console.log(this.registerForm.value)
-      if(this.registerForm.value.Password==this.registerForm.value.pass2){
-         let Name=this.registerForm.value.Name
-         let Email=this.registerForm.value.Email
-         let Password=this.registerForm.value.Password
-      
-      this.api.registerUser(Name,Email,Password).subscribe((response:any)=>{
+      if(this.registerForm.value.password==this.registerForm.value.pass2){
+         let name=this.registerForm.value.name
+         let email=this.registerForm.value.email
+         let password=this.registerForm.value.password
+
+      this.api.registerUser(name,email,password).subscribe((response:any)=>{
          console.log(response)
          this.isRegistered=true
-  
+
          setTimeout(() => {
           this.route.navigateByUrl('social/login')
           this.isRegistered=false
-          
+
          }, 2000);
-        
-         
+
+
       },(response:any)=>{
         this.invalidDetails=response.error.message;
         setTimeout(() => {
           this.invalidDetails=''
           this.registerForm.reset()
-          
+
          }, 2000);
       })
-        
+
       }else{
         this.invalidDetails='Passwords are not same'
         setTimeout(() => {
           this.invalidDetails=''
           this.registerForm.reset()
-          
+
         }, 2000);
       }
     }else{
@@ -63,12 +64,12 @@ export class RegisterComponent {
       setTimeout(() => {
         this.invalidDetails=''
         this.registerForm.reset()
-        
+
       }, 2000);
     }
 
 
   }
-  
+
 
 }

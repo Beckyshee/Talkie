@@ -17,37 +17,41 @@ export class LoginComponent {
 
   //form group for validation
   loginForm=this.fb.group({
-    Email:['',[Validators.required,Validators.email]],
-    Password:['',[Validators.required,Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z/d$@$!%*?&].{8,}')]],
+    email:['',[Validators.required,Validators.email]],
+    password:['',[Validators.required]],
   })
 
   //login code
- 
+
   login(){
-    
+console.log(this.loginForm.value);
+
     if(this.loginForm.valid){
-      let Email=this.loginForm.value.Email
-      let Password=this.loginForm.value.Password
-      console.log(Email)
-      
-      this.api.login(Email,Password).subscribe((response:any)=>{
-        
+      let email=this.loginForm.value.email
+      let password=this.loginForm.value.password
+      console.log(email)
+
+      this.api.login(email,password).subscribe((response:any)=>{
+
         console.log(response)
-        window.localStorage.setItem('InstaFlixId',response.InstaFlixId)
-        window.localStorage.setItem('token',response.token)
+        // window.localStorage.setItem('InstaFlixId',response.InstaFlixId)
+        window.localStorage.setItem('token', response.token)
+           window.localStorage.setItem('userID', response.UserID)
         this.isLoggined=true
         setTimeout(() => {
-          this.route.navigateByUrl(`social/home/${response.InstaFlixId}`)
+          this.route.navigateByUrl(`social/home`)
         },2000);
-      },(response:any)=>{
+      }, (error: any) => {
+        console.log(error);
+
         this.notFoundMessage="Can't login incorrect Email or Password"
         setTimeout(() => {
           this.loginForm.reset()
           this.notFoundMessage=''
-          
+
         }, 2000);
       })
-      
+
 
 
     }else{
@@ -55,12 +59,12 @@ export class LoginComponent {
       setTimeout(() => {
         this.loginForm.reset()
         this.notFoundMessage=''
-        
-      }, 2000);
-       
 
-      
-      
+      }, 2000);
+
+
+
+
     }
   }
 

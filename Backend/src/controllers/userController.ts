@@ -11,8 +11,8 @@ import { ExtendedUser } from "../middleware/verifyToken";
 //register user
 export const registerUser = async (req: Request, res: Response) => {
   try {
-    let { name, email, password } = req.body;
-
+    let { name, email, password } = req.body; 
+    console.log(req.body)
     const { error } = userRegisterValidationSchema.validate(req.body);
 
     if (error) {
@@ -99,6 +99,7 @@ console.log(user);
       return res.status(200).json({
         message: "Logged in successfully",
         token,
+        UserID:user[0].UserID
       });
     } else {
       return res.status(401).json({

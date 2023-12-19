@@ -90,22 +90,19 @@
           <!-- Your Angular Home Component HTML File -->
 
           <div class="container-fluid" id="con">
-            <!-- Sidebar -->
 
-            <!-- Main Content -->
-            <main class="p-4" style="width: 80%">
-              <!-- Bootstrap Card Placeholder -->
+            <main  *ngFor="let post of posts; let i = index" class="p-4" style="width: 80%">
+
               <div class="card mb-4">
-                <!-- Example Post Card -->
                 <div class="card-body">
-                  <!-- User Info -->
+
                   <div class="d-flex align-items-center mb-2">
                     <img
                       width="50px " style="border-radius: 50%"
                       src="https://www.electricallicenserenewal.com/app-assets/images/user/12.jpg"
                       alt="User Profile"
                     />
-                    <span class="font-weight-bold">Becky Kariuki</span>
+                    <span class="font-weight-bold">{{post.content}}</span>
                   </div>
 
                   <!-- Post Image -->
@@ -180,92 +177,7 @@
 
             </main>
 
-             <main class="p-4" style="width: 80%">
-              <!-- Bootstrap Card Placeholder -->
-              <div class="card mb-4">
-                <!-- Example Post Card -->
-                <div class="card-body">
-                  <!-- User Info -->
-                  <div class="d-flex align-items-center mb-2">
-                    <img
-                      width="50px " style="border-radius: 50%"
-                      src="https://www.electricallicenserenewal.com/app-assets/images/user/12.jpg"
-                      alt="User Profile"
-                    />
-                    <span class="font-weight-bold">Becky Kariuki</span>
-                  </div>
 
-                  <!-- Post Image -->
-                  <img
-                    src="https://plus.unsplash.com/premium_photo-1679865371928-a34b2179c307?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    width="100px"
-                  />
-
-                  <!-- Like and Comment Buttons -->
-                  <!-- <div class="d-flex justify-content-between">
-                    <div class="d-flex align-items-center space-2">
-                      <button class="d-flex align-items-center space-1">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          height="16"
-                          width="16"
-                          viewBox="0 0 512 512"
-                        >
-
-                          <path
-                            d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"
-                          />
-                        </svg>
-
-
-                      </button>
-                      <button class="d-flex align-items-center space-1">
-
-                      </button>
-                    </div>
-
-                  </div> -->
-
-                  <!-- Comments Section -->
-                  <div class="mt-4">
-                    <div class="d-flex align-items-center space-2">
-                      <img width="45px"
-                        src="https://a.storyblok.com/f/191576/1200x800/215e59568f/round_profil_picture_after_.webp"
-                        alt="User Profile"
-                        class="w-6 h-6 rounded-circle"
-                      />
-                      <span class="text-sm font-weight-bold"> </span>
-                      <span class="text-sm">Amazing photo!</span>
-                    </div>
-                    <div class="d-flex align-items-center space-2 mt-2">
-                      <img width="45px"
-                        src="https://a.storyblok.com/f/191576/1200x800/215e59568f/round_profil_picture_after_.webp"
-                        alt="User Profile"
-                        class="w-6 h-6 rounded-circle"
-                      />
-                      <span class="text-sm font-weight-bold"></span> <br>
-                      <span class="text-sm">Love it!</span>
-                    </div>
-                  </div>
-
-                  <!-- Add Comment Section -->
-                  <div class="mt-2">
-                    <input
-                      placeholder="Add a comment..."
-                      class="form-control border rounded"
-                    />
-                    <button class="btn btn-primary px-4 py-2 rounded">
-                      Post
-                    </button>
-                  </div>
-                </div>
-                <!-- End Example Post Card -->
-              </div>
-              <!-- End Bootstrap Card Placeholder -->
-
-              <!-- Your Main Content Goes Here -->
-
-            </main>
           </div>
 
           <div class="post" *ngFor="let posts of allposts; let i = index">

@@ -7,12 +7,18 @@ import { isEmpty } from "lodash";
 
 export const createPost = async (req: Request, res: Response) => {
   try {
+    // Generate a unique PostID using the v4 function
     const PostID = v4();
 
+    // Destructure values from the request body
     const { UserID, content, imageUrl } = req.body;
+    console.log("Request body: ", req.body);
 
+    // Get the current timestamp for createdAt
     const createdAt = new Date().toISOString();
-    await dbHelper.execute("createPost", {
+
+    // Use dbHelper to execute the "createPost" function with the provided parameters
+    const result = await dbHelper.execute("createPost", {
       UserID,
       PostID,
       imageUrl,
@@ -20,13 +26,19 @@ export const createPost = async (req: Request, res: Response) => {
       createdAt,
     });
 
-    return res.status(200).json({ message: "post created successfully" });
+    console.log("Database result: ", result);
+
+    // Respond with a success message
+    return res.status(200).json({ message: "Post created successfully" });
   } catch (error) {
-    return res.json({
-      error: error,
+    // Handle errors and respond with an error message
+    console.error("Error creating post:", error);
+    return res.status(500).json({
+      error: "Internal Server Error",
     });
   }
 };
+
 
 export const fetchAllPosts = async (req: Request, res: Response) => {
   try {

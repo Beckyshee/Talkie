@@ -34,6 +34,7 @@ const userValidators_1 = require("../validators/userValidators");
 const registerUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         let { name, email, password } = req.body;
+        console.log(req.body);
         const { error } = userValidators_1.userRegisterValidationSchema.validate(req.body);
         if (error) {
             return res.status(400).json({ error: error.details[0].message });
@@ -93,6 +94,7 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             return res.status(200).json({
                 message: "Logged in successfully",
                 token,
+                UserID: user[0].UserID
             });
         }
         else {
