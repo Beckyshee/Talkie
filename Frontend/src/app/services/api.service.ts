@@ -270,7 +270,7 @@ export class ApiService {
       data
     );
   }
-  
+
   //uploading profile picture
   uploadProfilePic(formData: any, userId: any) {
     return this.http.post(

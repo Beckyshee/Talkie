@@ -10,6 +10,7 @@ import { AllpostsService } from '../allposts.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+[x: string]: any;
   //for holding id
   userId: string = '';
   followList: any = {}; //for holding following list
