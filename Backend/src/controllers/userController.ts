@@ -215,12 +215,7 @@ export const getFollowers = async (req: Request, res: Response) => {
 
     
 
-    // const followers = (
-    //   await pool
-    //     .request()
-    //     .input("followed_user_id", mssql.VarChar, followed_user_id)
-    //     .execute("fetchFollowers")
-    // ).recordset;
+    //const followers removed
      const result = await pool
        .request()
        .input("followed_user_id", followed_user_id)
